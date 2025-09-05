@@ -16,11 +16,14 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
+      - name: Grant execute permission for Gradlew
+        run: chmod +x gradlew
+
       - name: Build with Gradle
         run: ./gradlew shadowJar
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bmdsmdconvert
           path: build/libs/*all.jar
